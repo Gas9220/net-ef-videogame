@@ -27,5 +27,14 @@ namespace net_ef_videogame
             ReleaseDate = releaseDate;
             SoftwareHouseId = softwareHouseId;
         }
+
+        public override string ToString()
+        {
+            return $@"
+Name: {Name}
+Overview: {Overview}
+Release date: {ReleaseDate}
+";
+        }
     }
 }

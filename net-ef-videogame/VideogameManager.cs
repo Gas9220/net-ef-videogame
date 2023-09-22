@@ -34,12 +34,39 @@ namespace adonet_db_videogame
         }
         public static void SearchById()
         {
+            int videogameIdToFind = Helpers.checkValidInt("Videogame to find (by id): ", "Insert a valid number");
 
+            using (VideogameContext db = new VideogameContext())
+            {
+               Videogame? videogame = db.Videogames.Where(videogame => videogame.VideogameId == videogameIdToFind).FirstOrDefault();
+
+                if (videogame != null)
+                {
+                    Console.WriteLine(videogame.ToString());
+                } else
+                {
+                    Console.WriteLine("No videogames was found");
+                }
+            }
         }
 
         public static void SearchByName()
         {
+            string videoGameName = Helpers.checkValidString("Videogame to find (by name): ", "Can't be empty");
 
+            using (VideogameContext db = new VideogameContext())
+            {
+                Videogame? videogame = db.Videogames.Where(videogame => videogame.Name.StartsWith(videoGameName)).FirstOrDefault();
+
+                if (videogame != null)
+                {
+                    Console.WriteLine(videogame.ToString());
+                }
+                else
+                {
+                    Console.WriteLine("No videogames was found");
+                }
+            }
         }
 
         public static void DeleteGame()

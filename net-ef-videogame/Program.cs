@@ -25,10 +25,10 @@ What would you like to do?
                     VideogameManager.InsertGame();
                     break;
                 case 2:
-                    //VideogameManager.SearchById();
+                    VideogameManager.SearchById();
                     break;
                 case 3:
-                    //VideogameManager.SearchByName();
+                    VideogameManager.SearchByName();
                     break;
                 case 4:
                     //VideogameManager.DeleteGame();
