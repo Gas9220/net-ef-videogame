@@ -31,10 +31,10 @@ What would you like to do?
                     VideogameManager.SearchByName();
                     break;
                 case 4:
-                    //VideogameManager.DeleteGame();
+                    VideogameManager.DeleteGame();
                     break;
                 case 5:
-                    //System.Environment.Exit(1);
+                    System.Environment.Exit(1);
                     break;
                 default:
                     break;

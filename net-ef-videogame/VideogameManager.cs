@@ -71,7 +71,23 @@ namespace adonet_db_videogame
 
         public static void DeleteGame()
         {
+            int idVideogameToDelete = Helpers.checkValidInt("Videogame to delete (by id): ", "Insert a valid number");
 
+            using (VideogameContext db = new VideogameContext())
+            {
+                Videogame? videogame = db.Videogames.Where(videogame => videogame.VideogameId == idVideogameToDelete).FirstOrDefault();
+
+                if (videogame != null)
+                {
+                    Console.WriteLine(videogame.ToString() + "Successfully deleted");
+                    db.Remove(videogame);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    Console.WriteLine("No videogames was found");
+                }
+            }
         }
         private static Videogame CreateVideogame()
         {
