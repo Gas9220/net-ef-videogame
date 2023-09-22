@@ -14,11 +14,12 @@ namespace adonet_db_videogame
         {
             using (VideogameContext db = new VideogameContext())
             {
-                SoftwareHouse sh1 = new SoftwareHouse { Name = "Rockstar Games", VatNumber = 111111, City = "New York", Country = "America" };
-                SoftwareHouse sh2 = new SoftwareHouse { Name = "Ubisoft", VatNumber = 22222, City = "Montreal", Country = "Canada" };
-                db.Add(sh1);
-                db.Add(sh2);
+                SoftwareHouse newSoftwareHouse = CreateSoftwareHouse();
+                db.Add(newSoftwareHouse);
                 db.SaveChanges();
+
+                Console.Write("New SH: ");
+                Console.WriteLine(newSoftwareHouse.ToString());
             }
         }
 
@@ -38,12 +39,13 @@ namespace adonet_db_videogame
 
             using (VideogameContext db = new VideogameContext())
             {
-               Videogame? videogame = db.Videogames.Where(videogame => videogame.VideogameId == videogameIdToFind).FirstOrDefault();
+                Videogame? videogame = db.Videogames.Where(videogame => videogame.VideogameId == videogameIdToFind).FirstOrDefault();
 
                 if (videogame != null)
                 {
                     Console.WriteLine(videogame.ToString());
-                } else
+                }
+                else
                 {
                     Console.WriteLine("No videogames was found");
                 }
@@ -99,6 +101,17 @@ namespace adonet_db_videogame
             Videogame newVideogame = new Videogame(name, overview, date, swh);
 
             return newVideogame;
+        }
+        private static SoftwareHouse CreateSoftwareHouse()
+        {
+            string name = Helpers.checkValidString("SoftwareHouse name: ", "Cannot be empty");
+            int vatNumber = Helpers.checkValidInt("Software house VAT: ", "Insert a valid number");
+            string city = Helpers.checkValidString("Software house city: ", "Cannot be empty");
+            string country = Helpers.checkValidString("Software house country: ", "Cannot be empty");
+
+            SoftwareHouse newSoftwareHouse = new SoftwareHouse(name, vatNumber, city, country);
+
+            return newSoftwareHouse;
         }
     }
 }

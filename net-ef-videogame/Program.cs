@@ -6,18 +6,17 @@ namespace net_ef_videogame
     {
         static void Main(string[] args)
         {
-            VideogameManager.CreateSH();
-
             Console.WriteLine($@"
 What would you like to do?
 - 1 Insert a new game
 - 2 Search game by id
 - 3 Search game by name
 - 4 Delete a videogame
-- 5 Close the program
+- 5 Create new software house
+- 6 Close the program
 ");
 
-            int userChoice = Helpers.checkValidInt("Choose an option from 1 to 5: ", "Insert a valid number...");
+            int userChoice = Helpers.checkValidInt("Choose an option from 1 to 6: ", "Insert a valid number...");
 
             switch (userChoice)
             {
@@ -34,6 +33,9 @@ What would you like to do?
                     VideogameManager.DeleteGame();
                     break;
                 case 5:
+                    VideogameManager.CreateSH();
+                    break;
+                case 6:
                     System.Environment.Exit(1);
                     break;
                 default:

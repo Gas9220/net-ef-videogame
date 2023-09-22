@@ -19,5 +19,23 @@ namespace net_ef_videogame
 
         public List<Videogame> Videogames { get; set; }
 
+
+        public SoftwareHouse(string name, int vatNumber, string city, string country)
+        {
+            Name = name;
+            VatNumber = vatNumber;
+            City = city;
+            Country = country;
+        }
+
+        public override string ToString()
+        {
+            return $@"
+Name: {Name}
+Vat: {VatNumber}
+City: {City}
+Country: {Country}
+";
+        }
     }
 }
