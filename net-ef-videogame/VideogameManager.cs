@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using net_ef_videogame;
+using Microsoft.EntityFrameworkCore;
 
 namespace adonet_db_videogame
 {
@@ -88,6 +89,28 @@ namespace adonet_db_videogame
                 else
                 {
                     Console.WriteLine("No videogames was found");
+                }
+            }
+        }
+
+        public static void GetSoftwareHouseGames()
+        {
+            int idSoftwareHouseToFind = Helpers.checkValidInt("Search games for (by software house id): ", "Can't be empty");
+
+            using (VideogameContext db = new VideogameContext())
+            {
+                List<Videogame> videogames = db.Videogames.Where(videogame => videogame.SoftwareHouseId == idSoftwareHouseToFind).OrderBy(videogame => videogame.Name).ToList();
+
+                if (videogames.Count > 0)
+                {
+                    foreach (var game in videogames)
+                    {
+                        Console.WriteLine(game.ToString());
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No software house was found");
                 }
             }
         }

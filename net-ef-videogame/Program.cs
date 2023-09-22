@@ -13,7 +13,8 @@ What would you like to do?
 - 3 Search game by name
 - 4 Delete a videogame
 - 5 Create new software house
-- 6 Close the program
+- 6 Print software house games
+- 7 Close the program
 ");
 
             int userChoice = Helpers.checkValidInt("Choose an option from 1 to 6: ", "Insert a valid number...");
@@ -36,6 +37,9 @@ What would you like to do?
                     VideogameManager.CreateSH();
                     break;
                 case 6:
+                    VideogameManager.GetSoftwareHouseGames();
+                    break;
+                case 7:
                     System.Environment.Exit(1);
                     break;
                 default:
