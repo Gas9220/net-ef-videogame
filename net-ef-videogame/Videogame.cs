@@ -19,5 +19,13 @@ namespace net_ef_videogame
 
         public int SoftwareHouseId { get; set; }
         public SoftwareHouse SoftwareHouse { get; set; }
+
+        public Videogame(string name, string overview, DateTime releaseDate, int softwareHouseId)
+        {
+            Name = name;
+            Overview = overview;
+            ReleaseDate = releaseDate;
+            SoftwareHouseId = softwareHouseId;
+        }
     }
 }
